@@ -1,7 +1,12 @@
 import React from "react";
-import { Github, ExternalLink } from "lucide-react";
-import olova from "../assets/images/olova.png";
+import { Github, Eye } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import shopfu from '../assets/images/projects/shopFu.png';
+import jchaw from '../assets/images/projects/jchaw.png';
+import jchawDash from '../assets/images/projects/jchaw-dashboard.png';
+import teache from '../assets/images/projects/teache.png';
+import curr from '../assets/images/projects/curr.png';
+import bluetv from '../assets/images/projects/bluetv.png';
 
 const MacOsButtons = () => (
   <div className="flex gap-2 mb-4">
@@ -14,29 +19,89 @@ const MacOsButtons = () => (
 const ProjectShowcase = () => {
   const projects = [
     {
-      title: "Olova! A Lightweight JavaScript Library",
+      title: "J-Chaw Shopping",
       description:
-        "Olova.js is a lightweight JavaScript library for building modern, reactive, and dynamic web applications. It features a simple, component-based architecture, enabling developers to create reusable and interactive UI elements with minimal code and overhead.",
-      tags: ["JavaScript", "Reactive", "Web Development"],
+        "J-Chaw offers a stylish online shopping experience for gold and jewelry lovers. Browse a wide range of premium rings, necklaces, and earrings, and enjoy easy, secure shopping",
+      tags: ["react", "typescript", "tailwind css", 'rest api', 'Laravel'],
       links: {
-        github: "https://github.com/olovajs/olova",
-        demo: "https://olova.js.org/",
+        github: "https://github.com/samsouta/jchaw-shopping-frontend",
+        demo: "https://j-chaw.netlify.app/home",
       },
-      image: olova,
+      image: jchaw,
       featured: true,
+    },
+    {
+      title: "FeatureShop UI",
+      description:
+        "Feautreshop offers a sleek, easy-to-use design with vibrant visuals and smooth navigation. Shop effortlessly across all devices with a simple, fast checkout process",
+      tags: ["react", "typescript", "tailwind css"],
+      links: {
+        github: "https://github.com/samsouta/chaw-shopping",
+        demo: "https://chaw-shopping.netlify.app/",
+      },
+      image: shopfu,
+      featured: true,
+    },
+    {
+      title: "Admin Dashboard",
+      description:
+        "An admin dashboard helps manage and monitor system functions, including user management, content control, and data analytics",
+      tags: ["react", "javascript", "tailwind css", 'vite'],
+      links: {
+        github: "https://github.com/samsouta/jchaw-dashboard",
+        demo: "https://jchaw-dashboard.netlify.app/dashboard/home",
+      },
+      image: jchawDash,
+      featured: true,
+    },
+    {
+      title: "teache Clone",
+      description:
+        "learning website",
+      tags: ["react", "javascript", "Styled Components", 'GSAP'],
+      links: {
+        github: "https://github.com/samsouta/teacheclone?tab=readme-ov-file#show-your-support",
+        demo: "https://teache-clone.netlify.app/",
+      },
+      image: teache,
+      featured: true,
+    },
+    {
+      title: "Currency Converter",
+      description:
+        " currency converter app that allows users to convert between different currencies and track their exchange rates in real-time using the latest currency exchange rates ",
+      tags: ["react", "Typescript", "Tailwind css", 'API'],
+      links: {
+        github: "https://github.com/samsouta/currency-exchange",
+        demo: "https://currency-j.netlify.app/",
+      },
+      image: curr,
+      featured: false,
+    },
+    {
+      title: "BLueTv",
+      description:
+        "STEAMING TV APPLICATION",
+      tags: ["react", "Typescript", "Tailwind css", 'REST API' , 'Laravel','MYSQL'],
+      links: {
+        github: "https://github.com/samsouta",
+        demo: "https://bluetv.xyz",
+      },
+      image: bluetv,
+      featured: false,
     },
   ];
 
   return (
     <div
-      className="pt-40 min-h-screen bg-gradient-to-b from-[#020617] via-[#0a0f1f] to-[#000D1A]/90
+      className="pt-40 min-h-screen bg-[#121312]
  p-8 text-slate-100"
     >
       <div className="max-w-7xl mx-auto space-y-12">
         {projects.map((project, index) => (
           <div
             key={index}
-            className="flex flex-col md:flex-row items-center group rounded-lg p-[2px] bg-gradient-to-r from-cyan-500 via-purple-500 to-emerald-500 bg-[length:400%_400%] animate-gradient-xy hover:bg-[length:100%_100%] transition-all duration-700 shadow-lg"
+            className="flex flex-col md:flex-row items-center group rounded-lg p-[2px] bg-gradient-to-r from-[#121312] via-[#a67d43] to-[#ad0013] bg-[length:400%_400%] animate-gradient-xy hover:bg-[length:100%_100%] transition-all duration-700 shadow-lg"
           >
             {/* Image Section */}
             <div className="md:w-1/2 overflow-hidden rounded-lg">
@@ -48,7 +113,7 @@ const ProjectShowcase = () => {
             </div>
 
             {/* Text Section */}
-            <Card className="md:w-1/2 bg-gradient-to-br from-slate-800 to-gray-900 rounded-lg overflow-hidden shadow-md transition-transform duration-500 group-hover:scale-105 group-hover:shadow-2xl p-6">
+            <Card className="md:w-1/2 bg-gradient-to-br border border-[#ad0013]/80 from-slate-800 to-gray-900 rounded-lg overflow-hidden shadow-md transition-transform duration-500 group-hover:scale-105 group-hover:shadow-2xl p-6">
               <MacOsButtons />
 
               <CardHeader>
@@ -76,7 +141,7 @@ const ProjectShowcase = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <ExternalLink size={22} />
+                      <Eye size={22} />
                     </a>
                   </div>
                 </div>

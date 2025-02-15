@@ -168,23 +168,17 @@ const profile = {
 
                 {/* Contact Button */}
                 <a
-                  href="#"
+                  href="https://drive.google.com/uc?export=download&id=1lUF8Z3Zxr9dcyF5Cy9YhL5VvgJBsFlxL"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="group relative inline-flex items-center justify-center gap-3"
                 >
-                  {/* <span className="block w-full px-6 sm:px-8 py-3 sm:py-4 rounded-[11px] bg-[var(--tetsukon)] border border-gray-700/50 transition-all duration-300 group-hover:bg-gradient-to-r group-hover:from-gray-800 group-hover:to-gray-700">
-                    <span className="relative flex items-center justify-center gap-2 text-gray-300 font-medium group-hover:text-white">
-                      <span>Get Resume</span>
-                      <i className="fas fa-envelope transform transition-all duration-300 group-hover:rotate-12"></i>
-                    </span>
-                  </span> */}
                   <button
                     className="cursor-pointer flex justify-between bg-[--tetsukon]/40 border border-red-600 px-3 py-2 rounded-xl text-[var(--kincha)] tracking-wider shadow-xl hover:bg-[#DDDDDD]/30 backdrop:blur-lg hover:scale-105 duration-500 hover:ring-1 font-mono h-14 w-full sm:w-40"
                   >
                     Resume
                     <ArrowDown className="transition-transform duration-800 group-hover:translate-y-1 animate-bounce" />
                   </button>
-
-
                 </a>
               </div>
 

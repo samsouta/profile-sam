@@ -1,11 +1,8 @@
 import React, { useState } from "react";
-import EducationLoader from "./ui/EducationLoader";
 import {
-  Star,
   Award,
   Calendar,
   BookOpen,
-  GraduationCap,
   Trophy,
 } from "lucide-react";
 import { motion } from "framer-motion";
@@ -15,22 +12,12 @@ const EducationSection = () => {
 
   const educationData = [
     {
-      degree: "Secondary School Certificate (SSC)",
-      school: "Natore Textile Institute",
-      mascot: "📘",
-      year: "2019-2021",
-      achievements: ["GPA: 4.89", "Subject: Science"],
-      skills: ["Mathematics", "Physics", "Chemistry", "Biology"],
-      description:
-        "Focused on core science subjects with emphasis on practical laboratory work and scientific research methodologies.",
-    },
-    {
-      degree: "Higher Secondary Certificate (HSC)",
-      school: "Dottopara Model Degree College",
+      degree: "Bachelor of Computer Science",
+      school: "Lincoln University College",
       mascot: "📗",
-      year: "2021-2023",
-      achievements: ["GPA: 4.25", "Subject: Arts"],
-      skills: ["Literature", "Social Studies", "Economics", "History"],
+      year: "2024-present",
+      achievements:[''],
+      skills: [""],
       description:
         "Developed strong analytical and critical thinking skills through comprehensive study of humanities and social sciences.",
     },
@@ -60,7 +47,7 @@ const EducationSection = () => {
 
   return (
     <section
-      className="min-h-screen relative overflow-hidden py-40 bg-gradient-to-b from-[#020617] via-[#0a0f1f] to-[#000D1A]/90"
+      className="min-h-screen relative overflow-hidden py-40 bg-[#121312]"
     >
       <div className="max-w-6xl mx-auto px-4 relative z-10">
         <motion.div
@@ -69,7 +56,7 @@ const EducationSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-teal-400 to-blue-500 bg-clip-text text-transparent mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold bg-[var(--kincha)] bg-clip-text text-transparent mb-6">
             Educational Journey
           </h2>
           <p className="text-gray-300 max-w-2xl mx-auto text-lg">
@@ -88,10 +75,10 @@ const EducationSection = () => {
             <motion.div
               key={index}
               variants={cardVariants}
-              className={`relative border rounded-xl p-8 transition-all duration-300 bg-gray-900/50 backdrop-blur-sm ${
+              className={`relative border rounded-xl p-8 transition-all duration-300 bg-[#121312]/50 backdrop-blur-sm ${
                 hoveredIndex === index
-                  ? "border-teal-500 scale-[1.02]"
-                  : "border-blue-400/20"
+                  ? "border-[#a67d43] scale-[1.02]"
+                  : "border-[#ad0013]/60"
               }`}
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
@@ -119,11 +106,11 @@ const EducationSection = () => {
                 </p>
 
                 <div className="space-y-3">
-                  <h4 className="text-sm font-semibold text-white flex items-center gap-2">
+                  {/* <h4 className="text-sm font-semibold text-white flex items-center gap-2">
                     <Trophy className="w-4 h-4 text-yellow-500" />
                     Key Achievements
-                  </h4>
-                  <div className="flex flex-wrap gap-2">
+                  </h4> */}
+                  {/* <div className="flex flex-wrap gap-2">
                     {edu.achievements.map((achievement, i) => (
                       <div
                         key={i}
@@ -133,10 +120,10 @@ const EducationSection = () => {
                         <span>{achievement}</span>
                       </div>
                     ))}
-                  </div>
+                  </div> */}
                 </div>
 
-                <div className="flex flex-wrap gap-2">
+                {/* <div className="flex flex-wrap gap-2">
                   {edu.skills.map((skill, i) => (
                     <span
                       key={i}
@@ -145,7 +132,7 @@ const EducationSection = () => {
                       {skill}
                     </span>
                   ))}
-                </div>
+                </div> */}
               </div>
             </motion.div>
           ))}

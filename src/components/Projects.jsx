@@ -1,4 +1,3 @@
-import React from "react";
 import { Github, Eye } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import shopfu from '../assets/images/projects/shopFu.png';
@@ -79,13 +78,13 @@ const ProjectShowcase = () => {
       featured: false,
     },
     {
-      title: "BLueTv",
+      title: "BLue TV",
       description:
-        "STEAMING TV APPLICATION",
+        "High-Traffic Video Streaming Service",
       tags: ["react", "Typescript", "Tailwind css", 'REST API' , 'Laravel','MYSQL'],
       links: {
         github: "https://github.com/samsouta",
-        demo: "https://bluetv.xyz",
+        demo: "",
       },
       image: bluetv,
       featured: false,

@@ -12,3 +12,22 @@
   --kincha: #a67d43; /* Golden brown tea */
   --kuro: #121312;
 }
+
+/* Animation for the warning alert button */
+@keyframes shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-shimmer {
+  background-size: 200% 200%;
+  animation: shimmer 2s ease infinite;
+}
+

@@ -1,11 +1,12 @@
+import { useState } from "react";
 import { Github, Eye } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import shopfu from '../assets/images/projects/shopFu.png';
 import jchaw from '../assets/images/projects/jchaw.png';
 import jchawDash from '../assets/images/projects/jchaw-dashboard.png';
 import teache from '../assets/images/projects/teache.png';
-import curr from '../assets/images/projects/curr.png';
 import bluetv from '../assets/images/projects/bluetv.png';
+import WarningAlert from "./ui/WarningAlert";
 
 const MacOsButtons = () => (
   <div className="flex gap-2 mb-4">
@@ -16,6 +17,55 @@ const MacOsButtons = () => (
 );
 
 const ProjectShowcase = () => {
+  const [alertInfo, setAlertInfo] = useState({
+    isOpen: false,
+    url: "",
+    title: "",
+    message: ""
+  });
+
+  // Function to handle link clicks
+  const handleLinkClick = (e, url, needsAlert, projectTitle, linkType) => {
+    if (needsAlert) {
+      e.preventDefault();
+
+      let message = "";
+      let confirmText = "Proceed";
+      let cancelText = "Cancel";
+
+      if (linkType === "github") {
+        message = "Due to security reasons, this repository is private . You cannot proceed to GitHub. If you want to check it, please contact the developer.";
+        confirmText = "Proceed";
+        cancelText = "Cancel";
+      } else if (linkType === "demo") {
+        message = "This demo contains restricted content. By proceeding, you confirm that you are 18 years of age or older. Do you wish to proceed or decline?";
+        confirmText = "Accept";
+        cancelText = "NO";
+      }
+
+      setAlertInfo({
+        isOpen: true,
+        url: url,
+        title: `Warning: ${projectTitle}`,
+        message: message,
+        confirmText: confirmText,
+        cancelText: cancelText
+      });
+    }
+    // If no alert needed, the link will work normally
+  };
+
+  // Function to handle confirmation from alert
+  const handleConfirm = () => {
+    window.open(alertInfo.url, "_blank", "noopener,noreferrer");
+    setAlertInfo({ ...alertInfo, isOpen: false });
+  };
+
+  // Function to close the alert
+  const handleCloseAlert = () => {
+    setAlertInfo({ ...alertInfo, isOpen: false });
+  };
+
   const projects = [
     {
       title: "J-Chaw Shopping",
@@ -28,6 +78,7 @@ const ProjectShowcase = () => {
       },
       image: jchaw,
       featured: true,
+      alert: false
     },
     {
       title: "FeatureShop UI",
@@ -40,6 +91,7 @@ const ProjectShowcase = () => {
       },
       image: shopfu,
       featured: true,
+      alert: false
     },
     {
       title: "Admin Dashboard",
@@ -52,9 +104,10 @@ const ProjectShowcase = () => {
       },
       image: jchawDash,
       featured: true,
+      alert: false
     },
     {
-      title: "teache Clone",
+      title: "teache Clone UI",
       description:
         "learning website",
       tags: ["react", "javascript", "Styled Components", 'GSAP'],
@@ -64,30 +117,20 @@ const ProjectShowcase = () => {
       },
       image: teache,
       featured: true,
+      alert: false
     },
     {
-      title: "Currency Converter",
+      title: "BLue TV - High-Traffic Video Streaming Service",
       description:
-        " currency converter app that allows users to convert between different currencies and track their exchange rates in real-time using the latest currency exchange rates ",
-      tags: ["react", "Typescript", "Tailwind css", 'API'],
-      links: {
-        github: "https://github.com/samsouta/currency-exchange",
-        demo: "https://currency-j.netlify.app/",
-      },
-      image: curr,
-      featured: false,
-    },
-    {
-      title: "BLue TV",
-      description:
-        "High-Traffic Video Streaming Service",
-      tags: ["react", "Typescript", "Tailwind css", 'REST API' , 'Laravel','MYSQL'],
+        "This video streaming platform offers both free and premium membership options, with premium users enjoying 4K streaming for the highest quality viewing experience. Payments are flexible, supporting PayPal, credit/debit cards, and a redeemable premium code system for easy access to exclusive content. Designed to handle high traffic on a daily basis, the platform ensures smooth streaming and reliability, making it the perfect solution for users who want seamless access to a wide range of content with premium quality.",
+      tags: ["react", "Typescript", "Tailwind css", 'REST API', 'Laravel', 'MYSQL'],
       links: {
         github: "https://github.com/samsouta",
-        demo: "",
+        demo: "https://bluetv.xyz",
       },
       image: bluetv,
       featured: false,
+      alert: true
     },
   ];
 
@@ -119,7 +162,7 @@ const ProjectShowcase = () => {
                 <div className="flex justify-between items-start">
                   <div>
                     <div className="text-emerald-400 text-sm font-mono mb-2 tracking-wide uppercase">
-                      Featured Project
+                      {project.featured ? "Featured" : "Live"}
                     </div>
                     <CardTitle className="text-slate-100 text-3xl font-bold">
                       {project.title}
@@ -131,17 +174,21 @@ const ProjectShowcase = () => {
                       className="text-slate-400 hover:text-emerald-400 transition-all duration-300 transform hover:scale-125"
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={(e) => handleLinkClick(e, project.links.github, project.alert, project.title, "github")}
                     >
                       <Github size={22} />
                     </a>
-                    <a
-                      href={project.links.demo}
-                      className="text-slate-400 hover:text-emerald-400 transition-all duration-300 transform hover:scale-125"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <Eye size={22} />
-                    </a>
+                    {project.links.demo && (
+                      <a
+                        href={project.links.demo}
+                        className="text-slate-400 hover:text-emerald-400 transition-all duration-300 transform hover:scale-125"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => handleLinkClick(e, project.links.demo, project.alert, project.title, "demo")}
+                      >
+                        <Eye size={22} />
+                      </a>
+                    )}
                   </div>
                 </div>
               </CardHeader>
@@ -165,6 +212,17 @@ const ProjectShowcase = () => {
           </div>
         ))}
       </div>
+
+      {/* Warning Alert Modal */}
+      <WarningAlert
+        isOpen={alertInfo.isOpen}
+        onClose={handleCloseAlert}
+        onConfirm={handleConfirm}
+        title={alertInfo.title}
+        message={alertInfo.message}
+        confirmText={alertInfo.confirmText}
+        cancelText={alertInfo.cancelText}
+      />
     </div>
   );
 };
